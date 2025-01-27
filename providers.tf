@@ -8,13 +8,14 @@ provider "aws" {
   default_tags {
     tags = {
       managed_by = "AFT"
+      alias      = "ct_management"
     }
   }
 }
 
 provider "aws" {
   alias  = "aft_management"
-  region = var.ct_home_region
+  region = var.aft_home_region
   assume_role {
     role_arn     = "arn:${data.aws_partition.current.partition}:iam::${var.aft_management_account_id}:role/AWSControlTowerExecution"
     session_name = local.aft_session_name
@@ -22,6 +23,7 @@ provider "aws" {
   default_tags {
     tags = {
       managed_by = "AFT"
+      alias      = "aft_management"
     }
   }
 }
@@ -35,6 +37,7 @@ provider "aws" {
   default_tags {
     tags = {
       managed_by = "AFT"
+      alias      = "tf_backend_secondary_region"
     }
   }
 }
@@ -48,6 +51,7 @@ provider "aws" {
   default_tags {
     tags = {
       managed_by = "AFT"
+      alias      = "audit"
     }
   }
 }
@@ -61,6 +65,7 @@ provider "aws" {
   default_tags {
     tags = {
       managed_by = "AFT"
+      alias      = "log_archive"
     }
   }
 }

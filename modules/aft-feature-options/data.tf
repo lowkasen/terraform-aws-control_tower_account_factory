@@ -7,6 +7,10 @@ data "aws_region" "current" {
   provider = aws.aft_management
 }
 
+data "aws_region" "ct_log" {
+  provider = aws.log_archive
+}
+
 data "aws_caller_identity" "current" {
   provider = aws.aft_management
 }

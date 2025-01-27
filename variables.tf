@@ -67,6 +67,15 @@ variable "ct_home_region" {
   }
 }
 
+variable "aft_home_region" {
+  description = "The region where AFT will be deployed to, this region is used for all the resources in AFT account."
+  type        = string
+  validation {
+    condition     = can(regex("(us(-gov)?|ap|ca|cn|eu|sa|me|af|il)-(central|(north|south)?(east|west)?)-\\d", var.aft_home_region))
+    error_message = "Variable var: region is not valid."
+  }
+}
+
 variable "cloudwatch_log_group_retention" {
   description = "Amount of days to keep CloudWatch Log Groups for Lambda functions. 0 = Never Expire"
   type        = string
